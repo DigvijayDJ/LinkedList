@@ -1,0 +1,154 @@
+import java.io.*; 
+
+class LinkedList { 
+  
+    static Node head; // head of list 
+  
+    // Linked list Node. 
+    // This inner class is made static 
+    // so that main() can access it 
+    static class Node { 
+  
+        int data; 
+        Node next; 
+  
+        // Constructor 
+        Node(int d) 
+        { 
+            data = d; 
+            next = null; 
+        } 
+    } 
+  
+    // Method to insert a new node 
+    public static LinkedList insert(LinkedList list, int data) 
+    { 
+        // Create a new node with given data 
+        Node new_node = new Node(data); 
+        new_node.next = null; 
+  
+        // If the Linked List is empty, 
+        // then make the new node as head 
+        if (list.head == null) { 
+            list.head = new_node; 
+        } 
+        else { 
+            // Else traverse till the last node 
+            // and insert the new_node there 
+            Node last = list.head; 
+            while (last.next != null) { 
+                last = last.next; 
+            } 
+  
+            // Insert the new_node at last node 
+            last.next = new_node; 
+        } 
+  
+        // Return the list by head 
+        return list; 
+    } 
+  
+    // Method to print the LinkedList. 
+    public static void printList(LinkedList list) 
+    { 
+        Node currNode = list.head; 
+   
+        System.out.print("LinkedList: "); 
+   
+        // Traverse through the LinkedList 
+        while (currNode != null) { 
+            // Print the data at current node 
+            System.out.print(currNode.data + " "); 
+   
+            // Go to next node 
+            currNode = currNode.next; 
+        } 
+    }
+    
+    
+    public static void InsertAtBeg(LinkedList list, int val){
+    	Node temp = new Node(val);
+    	//temp.next = null;
+    	
+    	temp.next = head;
+    	head = temp;
+    }
+    
+    public static void InsertAtEnd(LinkedList list, int val){
+    	Node temp = new Node(val);
+    	temp.next = null;
+    	Node curr = head;
+    	
+    	while(curr.next !=  null){
+    		//prev = curr ; 
+    		curr = curr.next;
+    	}
+    	
+    	curr.next = temp;
+    }
+    
+    
+    public static void InsertAtPos(LinkedList list, int pos, int val){
+    	Node nnode = new Node(val);
+    	nnode.next = null;
+    	
+    	Node prev = null;
+    	Node temp = head;
+    	
+    	int count = 0;
+    	
+    	if(pos == 0){
+    		InsertAtBeg(list,val);
+    		System.out.println("Node added at start");
+    	}
+    	
+    	while(temp != null && count<pos){
+    		prev = temp;
+    		temp = temp.next;
+    		count++;
+    	}
+    	
+    	if(count == pos){
+    		nnode.next = prev.next;
+    		prev.next = nnode;
+    		System.out.println("Node added at position : "+ pos);
+    	}
+    	
+    	else{
+    		System.out.println("pos is not found");
+    	}
+    	
+    	
+    }
+    
+    // Driver code 
+    public static void main(String[] args) 
+    { 
+        /* Start with the empty list. */
+        LinkedList list = new LinkedList();
+  
+        // Insert the values 
+        list = insert(list, 1); 
+        list = insert(list, 2); 
+        list = insert(list, 3); 
+        list = insert(list, 4); 
+        list = insert(list, 5); 
+        list = insert(list, 6); 
+        list = insert(list, 7); 
+        list = insert(list, 8); 
+  
+        // Print the LinkedList 
+        printList(list); 
+        
+        InsertAtBeg(list, 10);
+        printList(list);
+        
+        InsertAtEnd(list, 12);
+        printList(list);
+        
+        InsertAtPos(list, 6, 15);
+        printList(list);
+        
+       
+    }
+} 
