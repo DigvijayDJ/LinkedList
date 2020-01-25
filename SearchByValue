@@ -5,6 +5,79 @@ import java.lang.*;
 import java.io.*;
 
 /* Name of the class has to be "Main" only if the class is public. */
+class Node{
+	int data;
+	Node next;
+	Node(int d){
+		data = d;
+		next = null;
+	}
+}
+
+class LL{
+	Node head;
+	
+	public void push(int val){
+		Node nnode = new Node(val);
+		
+		nnode.next = head;
+		head = nnode;
+	}
+	
+	public boolean search(Node head, int x){
+		if(head==null){
+			return false;
+		}
+		
+		if(head.data == x){
+			return true;
+		}
+		
+		return search(head.next,x);
+	}
+	
+	
+	
+}
+
+class Ideone
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		
+		LL llist = new LL();
+		llist.push(1);
+		llist.push(2);
+		llist.push(3);
+		llist.push(4);
+		llist.push(5);
+		
+		if(llist.search(llist.head,4)){
+			System.out.println("ys");
+		}
+		else {
+		System.out.println("no");}
+		
+		
+	}
+}
+
+
+
+
+
+
+
+//*
+
+/* package whatever; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
 // class Ideone
 // {
 // 	public static void main (String[] args) throws java.lang.Exception
@@ -64,3 +137,6 @@ class LL{
 	}
 	
 }
+
+
+*//
