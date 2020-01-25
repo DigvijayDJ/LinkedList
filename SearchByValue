@@ -1,0 +1,66 @@
+/* package whatever; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+// class Ideone
+// {
+// 	public static void main (String[] args) throws java.lang.Exception
+// 	{
+// 		// your code goes here
+// 	}
+// }
+
+class Node{
+	int data;
+	Node next;
+	
+	Node(int d){
+		data = d;
+		next = null;
+	}
+	
+}
+
+
+class LL{
+	Node head;
+	
+	public void push(int val){
+		Node nnode = new Node(val);
+		nnode.next = head;
+		head = nnode;
+		
+	}
+	
+	public boolean LLsearch(LL list, int val){
+		Node temp = head;
+		boolean flag = false;
+		while(temp != null){
+			if(temp.data == val){
+				flag = true;
+			}
+			temp = temp.next;
+		}
+		
+		return flag;
+	}
+	
+	public void main(String[] args){
+		LL llist = new LL();
+		
+		llist.push(1);
+		llist.push(2);
+		llist.push(3);
+		llist.push(4);
+		llist.push(5);
+		
+		System.out.println(llist);
+		
+		LLsearch(llist,4);
+		
+	}
+	
+}
