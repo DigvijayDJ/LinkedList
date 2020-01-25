@@ -1,0 +1,81 @@
+/* package whatever; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Node{
+	int data;
+	Node next;
+	Node(int d){
+		data = d;
+		next = null;
+	}
+}
+
+class LL{
+	Node head;
+	
+	public void push(int val){
+		Node nnode = new Node(val);
+		
+		nnode.next = head;
+		head = nnode;
+	}
+	
+	public boolean searchByInd(Node head, int ind, int key){
+		int count = 0;
+		boolean flag = false;
+		Node nnode = head;
+		
+		
+		// if(head == null){
+		// 	return false;
+		// }
+		
+		while(head.next != null){
+			if(head.data == key && count == ind){
+				flag = true;
+			}
+			
+			head = head.next;
+			count++;
+		}
+		
+		// if(head==null){
+		// 	return false;
+		// }
+		
+		// if(head.data == x && count == ind){
+		// 	return true;
+		// }
+		
+		// return search(head.next,x);
+		
+		return flag;
+	}
+}
+
+class Ideone
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		
+		LL llist = new LL();
+		llist.push(1);
+		llist.push(2);
+		llist.push(3);
+		llist.push(4);
+		llist.push(5);
+		
+		if(llist.searchByInd(llist.head,0,1)){
+			System.out.println("ys");
+		}
+		else {
+		System.out.println("no");}
+		
+		
+	}
+}
