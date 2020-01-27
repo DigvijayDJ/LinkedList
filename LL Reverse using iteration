@@ -1,0 +1,81 @@
+/* package whatever; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Node{
+	int data;
+	Node next;
+	Node(int d){
+		data = d;
+		next = null;
+	}
+}
+
+class LL{
+	Node head;
+	
+	public void push(int val){
+		Node nnode = new Node(val);
+		
+		nnode.next = head;
+		head = nnode;
+	}
+	
+	public void reverseLL(){
+		Node curr = head;
+		Node next, prev = null;
+		
+		while(curr != null){
+			next = curr.next;
+			curr.next = prev;
+			prev = curr;
+			curr = next;
+		}
+		
+		head = prev;
+		
+	}
+	
+	public void display(){
+		Node curr = head;
+		
+		if(curr == null){
+			System.out.println("Empty list");
+		}
+		
+		else{
+			while(curr!=null){
+				System.out.print(curr.data +" ");
+				curr = curr.next;
+			}
+		}
+		System.out.println();
+	}
+	
+}
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Ideone
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		LL llist = new LL();
+		
+		llist.push(8);
+		llist.push(12);
+		llist.push(7);
+		llist.push(14);
+		llist.push(5);
+		
+		llist.display();
+		
+		llist.reverseLL();
+		
+		llist.display();
+		
+		
+	}
+}
